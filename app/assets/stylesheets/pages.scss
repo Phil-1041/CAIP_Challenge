@@ -1,12 +1,17 @@
 .page {
-  
-  h1 {
+  #name {
     padding: 0.67em;
     margin: 0;
+    border-bottom: 2px solid lightgray;
   }
   &__header {
     background: $white;
     height: 100px;
     padding: $base-spacing;
+  }
+
+  footer {
+    height: 100px;
+    background-color: rgb(37,45,77);
   }
 }

@@ -1,11 +1,13 @@
 <div class="page">
-  <h1 class="name">
+  <h2 id="name">
     Phil Zheng
-  </h1>
+  </h2>
 
+<div class=box-shadow>
   <div class="page__header">
-    Page
+    Search Term
   </div>
+</div>
 
   <div class="tabs">
     <div class="tab-menu">
@@ -15,7 +17,9 @@
   
     <div class="tab-content " id="page1">
       <div class="card box-shadow">
-        <%= @videos %>
+      <% @videos[:items].each do |videos| %>
+        <%= videos[:snippet][:title] %>
+      <% end %>
       </div>
     </div>
   
@@ -25,5 +29,9 @@
       </div>
     </div>
   </div>
+
+  <footer>
+
+  </footer>
 
 </div>

@@ -1,7 +1,8 @@
 class PagesController < ApplicationController
   def show
     _ids = search[:items].collect{ |i| i[:id][:videoId] }
-    @videos = get_full_details(_ids)
+    @videos = search
+    # get_full_details(_ids)
   end
 
   def search
