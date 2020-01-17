@@ -1,5 +1,9 @@
 .page {
-
+  
+  h1 {
+    padding: 0.67em;
+    margin: 0;
+  }
   &__header {
     background: $white;
     height: 100px;
