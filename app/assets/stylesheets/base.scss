@@ -23,8 +23,8 @@ body {
   background: $white;
   margin: auto;
   margin-bottom: $big-spacing;
-  max-width: 1000px;
-  padding: $base-spacing;
+  width: 70vw;
+  padding: $base-spacing 0;
 
   &.no-pad {
     padding: 0;
@@ -42,9 +42,9 @@ body {
 .tab-menu {
   border-bottom: 3px solid #a6afbe;
   display: flex;
-  margin: auto;
-  margin-bottom: $base-spacing;
-  padding: 0 $small-spacing;
+  width: 70vw;
+  margin-bottom: $small-spacing;
+  margin-top: $big-spacing;
 
   .tab-menu__item {
     cursor: pointer;
@@ -52,8 +52,10 @@ body {
     font-weight: 300;
     text-align: center;
     text-transform: uppercase;
-    margin-right: $base-spacing;
-    padding: $small-spacing 0;
+    padding-right: 100px;
+    padding-left: 20px;
+    padding-bottom: $base-spacing;
+    margin-right: 20px;
 
     &.selected {
       font-weight: 600;

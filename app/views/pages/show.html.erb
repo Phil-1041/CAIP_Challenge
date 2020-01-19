@@ -18,15 +18,31 @@
     <div class="tab-content " id="page1">
       <div class="card box-shadow">
         <% @videos["items"].each do |videos| %>
+        <div class="item-wrapper">
           <div class="list-item">
-            <p> <%= videos["snippet"]["title"] %> </p>
-            <p> <%= videos["snippet"]["channelTitle"] %> </p>
-            <p> <%= DateTime.parse(videos["snippet"]["publishedAt"]).strftime("%B %e, %Y") %> </p>
+            <div class="top section">
+              <p class="title"> <%= videos["snippet"]["title"] %> </p>
+              <p class="channel"> <%= videos["snippet"]["channelTitle"] %> </p>
+              <p class="pub-date"> <%= DateTime.parse(videos["snippet"]["publishedAt"]).strftime("%B %e, %Y") %> </p>
+            </div>
             
-            <p style="white-space: pre-line"> <%= videos["snippet"]["description"] %> </p>
+            <div class="mid section">
+              <div class="thumbnail-wrapper">
+                <img class="thumbnail" src=<%=videos["snippet"]["thumbnails"]["default"]["url"]%> alt="video-thumbnail">
+              </div>
+              <div class="desc-wrapper">
+                <p class="subtitle">DESCRIPTION</p>
+                <p class="description" style="white-space: pre-line"> <%= videos["snippet"]["description"] %> </p>
+              </div>
+            </div>
 
-            <img class="thumbnail" src=<%=videos["snippet"]["thumbnails"]["default"]["url"]%> alt="video-thumbnail">
+            <div class="bot section">
+              <p class="subtitle">VIEW COUNT</p>
+              <p class="subtitle">LIKE COUNT</p>
+              <p class="subtitle">TAGS</p>
+            </div>
           </div>
+        </div>
         <% end %>
       </div>
     </div>
