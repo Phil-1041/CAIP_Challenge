@@ -17,29 +17,43 @@
   
     <div class="tab-content " id="page1">
       <div class="card box-shadow">
-        <% @videos["items"].each do |videos| %>
+        <% @videos["items"].each do |video| %>
         <div class="item-wrapper">
           <div class="list-item">
             <div class="top section">
-              <p class="title"> <%= videos["snippet"]["title"] %> </p>
-              <p class="channel"> <%= videos["snippet"]["channelTitle"] %> </p>
-              <p class="pub-date"> <%= DateTime.parse(videos["snippet"]["publishedAt"]).strftime("%B %e, %Y") %> </p>
+              <p class="title"> <%= video["snippet"]["title"] %> </p>
+              <p class="channel"> <%= video["snippet"]["channelTitle"] %> </p>
+              <p class="pub-date"> <%= DateTime.parse(video["snippet"]["publishedAt"]).strftime("%B %e, %Y") %> </p>
             </div>
             
             <div class="mid section">
               <div class="thumbnail-wrapper">
-                <img class="thumbnail" src=<%=videos["snippet"]["thumbnails"]["medium"]["url"]%> alt="video-thumbnail">
+                <img class="thumbnail" src=<%=video["snippet"]["thumbnails"]["medium"]["url"]%> alt="video-thumbnail">
               </div>
               <div class="desc-wrapper">
                 <p class="subtitle">DESCRIPTION</p>
-                <p class="description" style="white-space: pre-line"> <%= videos["snippet"]["description"] %> </p>
+                <p class="description"> <%= video["snippet"]["description"] %> </p>
               </div>
             </div>
 
             <div class="bot section">
-              <p class="subtitle">VIEW COUNT</p>
-              <p class="subtitle">LIKE COUNT</p>
-              <p class="subtitle">TAGS</p>
+              
+              <div class="bot-headers">
+                <p class="subtitle">VIEW COUNT</p>
+                <p class="subtitle">LIKE COUNT</p>
+                <p class="subtitle">TAGS</p>
+              </div>
+              
+              <div class="bot-statistics">
+                <p class="stats"><%= video["statistics"]["viewCount"]%></p>
+                <p class="stats"><%= video["statistics"]["likeCount"]%></p>
+                <div class="stats">
+                  <% video["snippet"]["tags"].each do |tag|%>
+                    <p><%= tag %></p>
+                  <% end %>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>

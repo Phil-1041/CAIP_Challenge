@@ -3,23 +3,9 @@ class PagesController < ApplicationController
     _ids = search[:items].collect{ |i| i[:id][:videoId] }
     @videos = get_full_details(_ids)
     # print "RESPONSE --"
-    # print @videos["kind"]
+    # print @videos
     # print "--"
   end
-
-
-
-#  <% @videos[:items].each do |videos| %>
-#       <div class="list-item">
-      
-#         <p class="title"> <%= videos[:snippet][:title] %> </p>
-#         <p> DESCRIPTION </p>
-#         <br>
-#         <p class="description"> <%= videos[:snippet][:description] %> </p>
-#         <br>
-#       </div>
-#       <% end %>
-
 
   def search
     {
