@@ -11,15 +11,23 @@
 
   <div class="tabs">
     <div class="tab-menu">
-      <div class="tab-menu__item selected" target="#page1">Page 1</div>
-      <div class="tab-menu__item" target="#page2">Page 2</div>
+      <div class="tab-menu__item selected" target="#page1">ACCORDIAN</div>
+      <div class="tab-menu__item" target="#page2">GRAPH</div>
     </div>
   
     <div class="tab-content " id="page1">
       <div class="card box-shadow">
-      <% @videos[:items].each do |videos| %>
-        <%= videos[:snippet][:title] %>
-      <% end %>
+        <% @videos["items"].each do |videos| %>
+          <div class="list-item">
+            <p> <%= videos["snippet"]["title"] %> </p>
+            <p> <%= videos["snippet"]["channelTitle"] %> </p>
+            <p> <%= videos["snippet"]["publishedAt"] %> </p>
+            
+            <p> <%= videos["snippet"]["description"] %> </p>
+
+            <img class="thumbnail" src=<%=videos["snippet"]["thumbnails"]["default"]["url"]%> alt="video-thumbnail">
+          </div>
+        <% end %>
       </div>
     </div>
   
