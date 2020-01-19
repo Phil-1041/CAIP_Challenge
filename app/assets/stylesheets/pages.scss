@@ -46,10 +46,12 @@
 
     .thumbnail-wrapper {
       width: 30vw;
+
       .thumbnail {
         box-sizing: border-box;
-        padding: $base-spacing;
-        width: 100%;
+        width: 320px;
+        margin-top: $small-spacing;
+        padding: 0 $small-spacing;
       }
     }
 
