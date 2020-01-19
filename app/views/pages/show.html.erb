@@ -21,9 +21,9 @@
           <div class="list-item">
             <p> <%= videos["snippet"]["title"] %> </p>
             <p> <%= videos["snippet"]["channelTitle"] %> </p>
-            <p> <%= videos["snippet"]["publishedAt"] %> </p>
+            <p> <%= DateTime.parse(videos["snippet"]["publishedAt"]).strftime("%B %e, %Y") %> </p>
             
-            <p> <%= videos["snippet"]["description"] %> </p>
+            <p style="white-space: pre-line"> <%= videos["snippet"]["description"] %> </p>
 
             <img class="thumbnail" src=<%=videos["snippet"]["thumbnails"]["default"]["url"]%> alt="video-thumbnail">
           </div>
