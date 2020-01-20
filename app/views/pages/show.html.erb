@@ -28,13 +28,17 @@
         </div>
 
         <% @videos["items"].each do |video| %>
-        <div class="item-wrapper">
+        <div class="item-wrapper unselected">
           <div class="list-item">
 
+            
             <div class="top section">
-              <p class="title"> <%= video["snippet"]["title"] %> </p>
-              <p class="channel"> <%= video["snippet"]["channelTitle"] %> </p>
-              <p class="pub-date"> <%= DateTime.parse(video["snippet"]["publishedAt"]).strftime("%B %e, %Y") %> </p>
+              <i class="fa fa-angle-up fa-2x"></i>
+              <div class="head-wrapper">
+                <p class="title"> <%= video["snippet"]["title"] %> </p>
+                <p class="channel"> <%= video["snippet"]["channelTitle"] %> </p>
+                <p class="pub-date"> <%= DateTime.parse(video["snippet"]["publishedAt"]).strftime("%B %e, %Y") %> </p>
+              </div>
             </div>
 
             <div class="details">
