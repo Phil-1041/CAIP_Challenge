@@ -1,11 +1,13 @@
 <div class="page">
-  <h2 id="name">
-    Phil Zheng
-  </h2>
+  <div id="name">
+    <%= link_to 'Phil Zheng', '/page' %>
+  </div>
 
 <div class=box-shadow>
   <div class="page__header">
-    Search Term
+    <h2 id="search-header">
+      <%= @search %>
+    </h2>
   </div>
 </div>
 
@@ -48,9 +50,11 @@
             <div class="details">
 
             <div class="mid section">
-              <div class="thumbnail-wrapper">
-                <img class="thumbnail" src=<%=video["snippet"]["thumbnails"]["medium"]["url"]%> alt="video-thumbnail">
-              </div>
+              <a href=<%= "https://www.youtube.com/watch?v=#{video["id"]}" %>>
+                <div class="thumbnail-wrapper">
+                  <img class="thumbnail" src=<%=video["snippet"]["thumbnails"]["medium"]["url"]%> alt="video-thumbnail">
+                </div>
+              </a>
               <div class="desc-wrapper">
                 <p class="subtitle">DESCRIPTION</p>
                 <p class="description"> <%= video["snippet"]["description"] %> </p>

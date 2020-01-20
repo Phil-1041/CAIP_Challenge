@@ -4,8 +4,15 @@
   justify-content: center;
   letter-spacing: 0.25px;
 
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
   #name {
-    padding: $base-spacing;
+    font-size: 24px;
+    font-weight: 600;
+    padding: $small-spacing;
     margin: 0;
     border-bottom: 2px solid lightgray;
   }
@@ -13,7 +20,15 @@
   &__header {
     background: $white;
     height: 100px;
-    padding: $base-spacing;
+    padding: $small-spacing;
+    display: flex;
+    align-items: center;
+  }
+
+  #search-header {
+    font-weight: 500;
+    font-size: 30px;
+    margin-left: 100px;
   }
 
   .tabs {
