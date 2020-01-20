@@ -6,3 +6,14 @@ $(document).on('click', '.tab-menu__item', function() {
   $(this).parent('.tab-menu').parent('.tabs').find('.tab-content').addClass('hidden');
   $(target).removeClass('hidden');
 })
+
+$(document).on('click', '.unselected', function() {
+  
+  $(this).removeClass('unselected');
+
+  $(this).parent('.card').find('.open').removeClass('open').addClass('unselected');
+
+  $(this).addClass('open');
+})
+
+
