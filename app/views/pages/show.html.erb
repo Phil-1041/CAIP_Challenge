@@ -18,13 +18,15 @@
     <div class="tab-content " id="page1">
       <div class="card box-shadow">
 
-        <div id="search-bar">
-          <div id="search-wrapper">
-            <i class="fa fa-search"></i>
-            <input id="search-input" type="text" placeholder="Text">
-          </div>
-          <div id="reset"> Reset </div>
-          <div id="search"> Search </div>
+        <div id="search-bar-wrapper">
+          <form id="search-bar" action="/search">
+            <div id="search-wrapper">
+              <i class="fa fa-search"></i>
+              <input id="search-input" name="searchTerm" type="text" placeholder="Text">
+            </div>
+            <div id="reset"> Reset </div>
+            <button id="search" type="submit"> Search </button>
+          </form>
         </div>
 
         <% @videos["items"].each do |video| %>
@@ -33,7 +35,9 @@
 
             
             <div class="top section">
-              <i class="fa fa-angle-up fa-2x"></i>
+              <div class="fa-icon-wrapper">
+                <i class="fa fa-angle-up fa-2x"></i>
+              </div>
               <div class="head-wrapper">
                 <p class="title"> <%= video["snippet"]["title"] %> </p>
                 <p class="channel"> <%= video["snippet"]["channelTitle"] %> </p>
@@ -69,16 +73,18 @@
                 <p class="subtitle">TAGS</p>
                 <div class="stats">
                 <% output = ""%>
-                  <% video["snippet"]["tags"].each_with_index do |tag, i|%>
-                    <% if i == video["snippet"]["tags"].length - 1 %>
-                      <% output += ", " %>
-                      <% output += tag %>
-                      <p class="tag"><%= output %></p>
-                    <% elsif i == 0 %>
-                      <% output += tag %>
-                    <% else %>
-                      <% output += ", " %>
-                      <% output += tag %>
+                  <% if video["snippet"]["tags"] != nil %>
+                    <% video["snippet"]["tags"].each_with_index do |tag, i|%>
+                      <% if i == video["snippet"]["tags"].length - 1 %>
+                        <% output += ", " %>
+                        <% output += tag %>
+                        <p class="tag"><%= output %></p>
+                      <% elsif i == 0 %>
+                        <% output += tag %>
+                      <% else %>
+                        <% output += ", " %>
+                        <% output += tag %>
+                      <% end %>
                     <% end %>
                   <% end %>
                 </div>

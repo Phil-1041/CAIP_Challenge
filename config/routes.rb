@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root 'static#home'
 
   get '/page', to: 'pages#show'
+  get '/search', to: 'pages#query'
 end

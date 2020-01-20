@@ -2,9 +2,12 @@ class PagesController < ApplicationController
   def show
     _ids = search[:items].collect{ |i| i[:id][:videoId] }
     @videos = get_full_details(_ids)
-    # print "RESPONSE --"
-    # print @videos
-    # print "--"
+  end
+
+  def query
+    searchTerm = params[:searchTerm]
+    @videos = query_youtubeAPI(searchTerm)
+    render 'pages/show'
   end
 
   def search
@@ -190,5 +193,10 @@ class PagesController < ApplicationController
   def get_full_details(ids)
     yt = YoutubeInteractor.new('', ids)
     yt.get_details
+  end
+
+  def query_youtubeAPI(searchTerm)
+    yt = YoutubeInteractor.new(searchTerm)
+    yt.get_search_results
   end
 end

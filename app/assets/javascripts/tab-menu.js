@@ -8,7 +8,7 @@ $(document).on('click', '.tab-menu__item', function() {
 })
 
 $(document).on('click', '.unselected', function() {
-  
+
   $(this).removeClass('unselected');
 
   $(this).parent('.card').find('.open').removeClass('open').addClass('unselected');
@@ -16,4 +16,11 @@ $(document).on('click', '.unselected', function() {
   $(this).addClass('open');
 })
 
+$(document).on('click', '.fa-icon-wrapper', function () {
+  $(this).parents('.open').removeClass('open').addClass('unselected')
+})
 
+$(document).on('click', '#reset', () => {
+  $('#search-input').val('Ruby on Rails')
+  $('#search-bar').submit()
+})

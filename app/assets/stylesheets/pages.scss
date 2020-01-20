@@ -34,12 +34,12 @@
       height: 40px;
       width: 567px; //will need to adapt according to size of search icon
       border-radius: 3px;
-      padding: 0 $small-spacing;
+      padding-left: $small-spacing;
 
       #search-input {
         border: 0px;
         height: 40px;
-        width: 80%;
+        width: 95%;
         padding: 0;
         background: inherit;
         font-size: 16px;
@@ -47,6 +47,7 @@
         outline-width: 0;
         padding-left: 4px;
       }
+
     }
 
     #reset {
@@ -73,6 +74,10 @@
       color: white;
       font-weight: 300;
       cursor: pointer;
+      font-family: sans-serif;
+      font-size: 16px;
+      padding: 0;
+      border: none;
     }
 
   }
@@ -105,9 +110,14 @@
 
     .top {
       color: rgb(37,45,77);
-      // i {
-        
-      // }
+
+      .fa-icon-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        width: 30px;
+      }
 
       .head-wrapper {
         margin-left: $base-spacing;
