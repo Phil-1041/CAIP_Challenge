@@ -32,7 +32,8 @@
         </div>
 
         <% @videos["items"].each do |video| %>
-        <div class="item-wrapper unselected">
+        <div class="item-wrapper unselected" id=<%= video["id"] %>>
+
           <div class="list-item">
 
             
@@ -99,6 +100,7 @@
           </div>
         </div>
         <% end %>
+
       </div>
     </div>
   

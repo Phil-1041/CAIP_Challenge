@@ -10,10 +10,12 @@ $(document).on('click', '.tab-menu__item', function() {
 $(document).on('click', '.unselected', function() {
 
   $(this).removeClass('unselected');
-
   $(this).parent('.card').find('.open').removeClass('open').addClass('unselected');
-
   $(this).addClass('open');
+
+  //persisting opened tab on page reload
+  let tabId = $(this).attr('id')
+  localStorage.setItem("openTab", tabId);
 })
 
 $(document).on('click', '.fa-icon-wrapper', function () {
@@ -24,3 +26,15 @@ $(document).on('click', '#reset', () => {
   $('#search-input').val('Ruby on Rails')
   $('#search-bar').submit()
 })
+
+// persisting opened tab on page reload
+
+let openedTab = localStorage.getItem('openTab')
+
+window.addEventListener('DOMContentLoaded', () => {
+  $('.unselected').each( function() {
+    if ($(this).attr("id") == openedTab) {
+      $(this).removeClass('unselected').addClass('open')
+    }
+  }); 
+});

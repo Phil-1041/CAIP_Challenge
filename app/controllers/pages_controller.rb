@@ -4,7 +4,7 @@ class PagesController < ApplicationController
     @videos = get_full_details(_ids)
     @search = 'Ruby on Rails'
   end
-
+  
   def query
     searchTerm = params[:searchTerm]
     @videos = query_youtubeAPI(searchTerm)
