@@ -1,6 +1,6 @@
 class YoutubeInteractor
   
-  KEY = 'AIzaSyCDBqsPqMVrfeF8keFPnuqc7xaMlP_SrGE'
+  KEY = 'AIzaSyBj50YHor9YUnyzlKoiAq4XhGVRSyL8pig'
   BASE_URI = 'https://www.googleapis.com/youtube/v3/'.freeze
 
   def initialize(query = '', ids = [])
@@ -12,10 +12,11 @@ class YoutubeInteractor
     _url = "#{BASE_URI}search?part=snippet&q=#{@q}&type=video&maxResults=3&key=#{KEY}"
     searchRes = HTTParty.get(_url).body
     res = JSON.parse(searchRes)
-    print res
     @ids = res["items"].collect{ |i| i['id']['videoId'] }
     _url = "#{BASE_URI}videos?part=#{fields}&key=#{KEY}&id=#{@ids.join(',')}"
     res = HTTParty.get(_url).body
+    # @result = res
+    # print res
     JSON.parse(res)
   end
 

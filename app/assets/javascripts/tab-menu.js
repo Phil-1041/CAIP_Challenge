@@ -3,7 +3,7 @@ $(document).on('click', '.tab-menu__item', function() {
   $(this).parent('.tab-menu').find('.tab-menu__item').removeClass('selected');
   $(this).addClass('selected');
 
-  $(this).parent('.tab-menu').parent('.tabs').find('.tab-content').addClass('hidden');
+  $(this).parent('.tab-menu').parent('#tabs').find('.tab-content').addClass('hidden');
   $(target).removeClass('hidden');
 })
 
@@ -38,7 +38,7 @@ $(document).on('click', '#search', ()=> {
     data: {searchTerm},
   }).then( data => {
     $('#search-header').html(searchTerm)
-    $('#search-result-container').html(data.html)
+    $('#tabs').html(data.html)
   }).fail( error => {
     console.log(error)
   })

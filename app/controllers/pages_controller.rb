@@ -6,11 +6,15 @@ class PagesController < ApplicationController
       @search = 'Ruby on Rails'
     end
     @videos = query_youtubeAPI(@search)
+
+    @vid_data = @videos['items']
   end
   
   def query
     @search = params[:searchTerm]
     @videos = query_youtubeAPI(@search)
+
+    @vid_data = JSON.generate(@videos['items'])
 
     render json: { html: render_to_string(partial: 'results') }
   end
