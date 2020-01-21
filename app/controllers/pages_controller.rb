@@ -1,15 +1,17 @@
 class PagesController < ApplicationController
   def show
-    _ids = search[:items].collect{ |i| i[:id][:videoId] }
-    @videos = get_full_details(_ids)
-    @search = 'Ruby on Rails'
+    if !@last_search
+      @search = 'Ruby on Rails'
+    end
+    @videos = query_youtubeAPI(@search)
   end
   
   def query
-    searchTerm = params[:searchTerm]
-    @videos = query_youtubeAPI(searchTerm)
-    @search = searchTerm
-    render 'pages/show'
+    @search = params[:searchTerm]
+    @videos = query_youtubeAPI(@search)
+    print '---'
+    print params
+    render json: { html: render_to_string(partial: 'results') }
   end
 
   def search
