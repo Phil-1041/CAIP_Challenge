@@ -28,9 +28,7 @@ $(document).on('click', '.fa-icon-wrapper', function () {
 // Youtube Search AJAX Call 
 $(document).on('click', '#search', ()=> {
   let searchTerm = $('#search-input').val()
-
-  localStorage.setItem("searchTerm", searchTerm)
-  
+  $('#search-input').val('')
   //persist search without reloading page 
   window.history.pushState("obj or string", "persist-search", `/page?searchTerm=${searchTerm}`)
 
@@ -49,22 +47,6 @@ $(document).on('click', '#search', ()=> {
 $(document).on('click', '#reset', () => {
 
   window.history.pushState("obj or string", "persist-search", `/page`)
-  localStorage.setItem("searchTerm", 'Ruby on Rails')
-
-  $.ajax({
-    url: '/search',
-    method: 'GET',
-    data: { searchTerm: 'Ruby on Rails' },
-  }).then(data => {
-    $('#search-header').html('Ruby on Rails')
-    $('#search-result-container').html(data.html)
-  }).fail(error => {
-    console.log(error)
-  })
-})
-
-$(document).on('click', '#name', () => {
-  localStorage.setItem("searchTerm", 'Ruby on Rails')
 
   $.ajax({
     url: '/search',
@@ -80,7 +62,6 @@ $(document).on('click', '#name', () => {
 
 // persisting opened tab on page reload
 let openedTab = localStorage.getItem('openTab')
-let lastSearch = localStorage.getItem('searchTerm')
 
 $(document).ready( () => {
     $('.unselected').each(function () {
@@ -89,13 +70,14 @@ $(document).ready( () => {
       }
     }); 
 
-  //prevent form submission by pressing enter when focused on input field
+  // prevent form submission by pressing enter when focused on input field
   $(window).keydown(function (event) {
-    if (event.keyCode == 13) {
+
+    if (event.keyCode == 13 && event.target.id == 'search-input') {
       event.preventDefault();
 
       let searchTerm = $('#search-input').val()
-      localStorage.setItem("searchTerm", searchTerm)
+      $('#search-input').val('')
       window.history.pushState("obj or string", "persist-search", `/page?searchTerm=${searchTerm}`)
 
       $.ajax({
@@ -110,5 +92,6 @@ $(document).ready( () => {
       })
     }
   });
+
 });
 
