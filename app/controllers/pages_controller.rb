@@ -1,6 +1,9 @@
 class PagesController < ApplicationController
   def show
-    if !@last_search
+    print params
+    if params[:searchTerm]
+      @search = params[:searchTerm]
+    else 
       @search = 'Ruby on Rails'
     end
     @videos = query_youtubeAPI(@search)
@@ -9,8 +12,7 @@ class PagesController < ApplicationController
   def query
     @search = params[:searchTerm]
     @videos = query_youtubeAPI(@search)
-    print '---'
-    print params
+
     render json: { html: render_to_string(partial: 'results') }
   end
 

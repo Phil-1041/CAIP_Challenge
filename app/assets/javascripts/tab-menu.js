@@ -31,7 +31,8 @@ $(document).on('click', '#search', ()=> {
   console.log(searchTerm)
   localStorage.setItem("searchTerm", searchTerm)
   
-  window.location.search = searchTerm
+  //persist search without reloading page 
+  window.history.pushState("obj or string", "persist-search", `/page?searchTerm=${searchTerm}`)
 
   $.ajax({
     url: '/search',
@@ -47,6 +48,7 @@ $(document).on('click', '#search', ()=> {
 
 $(document).on('click', '#reset', () => {
 
+  window.history.pushState("obj or string", "persist-search", `/page`)
   localStorage.setItem("searchTerm", 'Ruby on Rails')
 
   $.ajax({
