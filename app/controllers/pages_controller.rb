@@ -1,6 +1,5 @@
 class PagesController < ApplicationController
   def show
-    print params
     if params[:searchTerm]
       @search = params[:searchTerm]
     else 

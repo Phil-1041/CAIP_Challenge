@@ -21,14 +21,14 @@ $(document).on('click', '.unselected', function() {
 $(document).on('click', '.fa-icon-wrapper', function () {
   $(this).parents('.open').removeClass('open').addClass('unselected')
   
-  //removing locally stored video Id if none are open
+  //removing locally stored video Id since none are open
   localStorage.setItem("openTab", '');
 })
 
 // Youtube Search AJAX Call 
 $(document).on('click', '#search', ()=> {
   let searchTerm = $('#search-input').val()
-  console.log(searchTerm)
+
   localStorage.setItem("searchTerm", searchTerm)
   
   //persist search without reloading page 
@@ -82,32 +82,33 @@ $(document).on('click', '#name', () => {
 let openedTab = localStorage.getItem('openTab')
 let lastSearch = localStorage.getItem('searchTerm')
 
-window.addEventListener('DOMContentLoaded', () => {
-  // if( lastSearch != null ){
-  //   Rails.ajax({
-  //     url: '/search',
-  //     type: 'get',
-  //     searchTerm: lastSearch,
-  //     success: function (data) {
-  //       $('#search-result-container').html(data.html)
-  //     },
-  //     failure: function (error) {
-  //       console.log(error)
-  //     }
-  //   }).then(() => {
-  //     $('.unselected').each(function () {
-  //       if ($(this).attr("id") == openedTab) {
-  //         $(this).removeClass('unselected').addClass('open')
-  //       }
-  //     }); 
-  //   })
-  // } else {
+$(document).ready( () => {
     $('.unselected').each(function () {
       if ($(this).attr("id") == openedTab) {
         $(this).removeClass('unselected').addClass('open')
       }
     }); 
-  // }
 
+  //prevent form submission by pressing enter when focused on input field
+  $(window).keydown(function (event) {
+    if (event.keyCode == 13) {
+      event.preventDefault();
+
+      let searchTerm = $('#search-input').val()
+      localStorage.setItem("searchTerm", searchTerm)
+      window.history.pushState("obj or string", "persist-search", `/page?searchTerm=${searchTerm}`)
+
+      $.ajax({
+        url: '/search',
+        method: 'GET',
+        data: { searchTerm },
+      }).then(data => {
+        $('#search-header').html(searchTerm)
+        $('#search-result-container').html(data.html)
+      }).fail(error => {
+        console.log(error)
+      })
+    }
+  });
 });
 
